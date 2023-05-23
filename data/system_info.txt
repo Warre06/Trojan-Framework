@@ -1,6 +1,1 @@
-DESKTOP-SROP9NG 
- 192.168.56.1 
- Windows 
- AMD64 
- AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD 
- 16495435776
+
