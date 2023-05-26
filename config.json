@@ -1,4 +1,4 @@
-[
+config = [
 	{
 	 "module" : "wifi_info"
 	},
