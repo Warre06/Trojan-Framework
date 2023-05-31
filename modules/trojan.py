@@ -20,4 +20,5 @@ class Trojan():
         return self.ip
     def get_system_info(self):
         system_info = f'{self.hostname} \n {self.ip} \n {self.os} \n {self.architecture} \n {self.processor} \n {self.ram}'
+        print(system_info)
         return system_info
