@@ -1,5 +1,8 @@
 [
 	{
+	"module" : "trojan"
+	},
+	{
 	 "module" : "wifi_info"
 	},
 	{
