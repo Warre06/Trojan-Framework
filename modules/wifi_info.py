@@ -7,7 +7,7 @@ class Wifi_Extractor:
         self.hostname = socket.gethostname()
 
     #MAIN FUNCTION
-    def extract_wifi_passwords(self):
+    def main(self):
         wifi_networks = self._get_wifi_profiles()
         wifi_passwords = {}
 
