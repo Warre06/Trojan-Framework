@@ -5,11 +5,12 @@ class NetworkScanner:
         self.target_subnet = target_subnet
         self.results = []
 
-    def scan_network(self):
+    def main(self):
         print(f"Scanning network {self.target_subnet}...\n")
         for host in self.get_hosts():
             if self.is_host_up(host):
                 self.results.append(host)
+        return self.results
 
     def get_hosts(self):
         hosts = []
@@ -31,6 +32,10 @@ class NetworkScanner:
         print("Hosts that are UP:")
         for host in self.results:
             print(host)
+        return self.results
+
+
+
 
 
 
