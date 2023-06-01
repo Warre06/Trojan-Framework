@@ -5,7 +5,7 @@ import socket
 import subprocess
 import re
 
-class Trojan():
+class Trojan:
     def __init__(self): 
         self.os = platform.system()
         self.processor = platform.processor()
@@ -18,7 +18,8 @@ class Trojan():
         return self.hostname
     def get_ip(self):
         return self.ip
-    def get_system_info(self):
+    def main(self):
         system_info = f'{self.hostname} \n {self.ip} \n {self.os} \n {self.architecture} \n {self.processor} \n {self.ram}'
         print(system_info)
         return system_info
+
