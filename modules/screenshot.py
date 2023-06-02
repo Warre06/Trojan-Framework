@@ -8,4 +8,4 @@ class ScreenshotMaker:
     def main(self):
         screenshot_path = f"{self.name}.png"
         screenshot = pyautogui.screenshot(screenshot_path)
-        return screenshot_path
+        return screenshot
