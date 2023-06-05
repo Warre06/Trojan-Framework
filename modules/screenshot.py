@@ -7,12 +7,11 @@ class ScreenshotMaker:
         self.name = datetime.now().strftime("%d%m%y_%H%M%S")
 
     def main(self):
-        screenshot_path = f"{self.name}.png"
-        screenshot = pyautogui.screenshot(screenshot_path)
-        
+        screenshot = pyautogui.screenshot()
+    
         buffer = BytesIO()
         screenshot.save(buffer, format="PNG")
         buffer.seek(0)
-        
-        # Return the image data
+    
+    # Return the image data as a PNG file
         return buffer.getvalue()
