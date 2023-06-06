@@ -3,4 +3,4 @@
         "wifi_info": {"module": "Wifi_Extractor", "class": "Wifi_Extractor","path":"data/wifi_passwords.json"},
         "screenshot": {"module": "ScreenshotMaker", "class": "ScreenshotMaker","path":"data/screenshots/"},
         "network_discovery": {"module": "NetworkScanner", "class": "NetworkScanner","path":"data/network_reconaissance.json"}
-    }
+}
