@@ -1,14 +1,6 @@
+//HACKER VOEGT ACTIES HIER TOE DIE MOETEN WORDEN UITGEVOERD WORDEN OP HOST 
 [
   {
-  "module":"trojan"
-  },
-  {
-  "module":"wifi_info"
-  },
-  {
-  "module":"network_discovery"
-  },
-  {
-  "module":"screenshot"
+  "module":"module_name"
   }
 ]
