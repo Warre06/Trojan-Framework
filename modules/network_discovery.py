@@ -3,39 +3,27 @@ import socket
 
 class NetworkScanner:
     def __init__(self):
-        self.ip = socket.gethostbyname(socket.gethostname())
-        self.target_subnet = self.ip.split(".")[2]
         self.results = []
 
+    
     def main(self):
-        print(f"Scanning network {self.target_subnet}...\n")
-        for host in self.get_hosts():
-            if self.is_host_up(host):
-                print(host)
-                self.results.append(host)
+        for adapter in self.get_adapters():
+            self.results.append(adapter['ip'])
         return self.results
+    
 
-    def get_hosts(self):
-        hosts = []
-        for i in range(1, 255):
-            ip = f"{self.target_subnet}.{i}"
-            hosts.append(ip)
-        return hosts
-
-    def is_host_up(self, host):
-        try:
-            result = subprocess.call(['ping', '-n', '1', '-w', '1', host], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            if result == 0:
-                return True
-            return False
-        except subprocess.CalledProcessError:
-            return False
-
-    def print_results(self):
-        print("Hosts that are UP:")
-        for host in self.results:
-            print(host)
-        return self.results
+    def get_adapters(self):
+        adapters = []
+        result = subprocess.check_output(['ipconfig', '/all'])
+        result = result.decode('utf-8').split('\n')
+        for line in result:
+            if 'IPv4' in line:
+                adapter = {}
+                adapter['name'] = line.split(':')[0] 
+                adapter['ip'] = line.split(':')[1].strip()
+                adapters.append(adapter)
+        return adapters
+    
 
 
 
